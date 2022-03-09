@@ -1,0 +1,58 @@
+using System;
+
+namespace PasswordChecker
+{
+  class Program
+  {
+    public static void Main(string[] args)
+    {
+int minLength = 8;
+string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+string lowrcase = "abcdefghijklmnopqrstuvwxyz";
+string digits = "0123456789";
+string specialChars = "#?!,-'/`_*$";
+Console.WriteLine("pls insert u psw  minimum length 8: ");
+string usrpsw = Console.ReadLine();
+int score = 0;
+if ((usrpsw == "password") || (usrpsw == "1234")){
+  Console.WriteLine("oh no MAN we are not there!");
+  Console.WriteLine("NO man pls insert u psw  minimum length 8: try again");
+}
+usrpsw = Console.ReadLine();
+if (usrpsw.Length >= minLength){
+score ++ ; 
+}
+if (Tools.Contains(usrpsw,uppercase)){
+  score ++;
+}
+if (Tools.Contains(usrpsw,lowrcase)){
+  score ++;
+}
+if (Tools.Contains(usrpsw,digits)){
+  score ++;
+}
+if (Tools.Contains(usrpsw,specialChars)){
+  score ++;
+}
+Console.WriteLine(score);
+switch (score){
+  case 4:
+  case 5:
+  Console.WriteLine("Good! your password is extremely strong!");
+  break;
+  case 3:
+  Console.WriteLine("your password is strong");
+  break;
+  case 2:
+  Console.WriteLine("your password is medium");
+  break;
+  case 1:
+  Console.WriteLine("nah, u password is weak!");
+  break;
+  default:
+        Console.WriteLine("Your password doesn't meet any standards");
+        break;
+}
+    }
+  }
+}
